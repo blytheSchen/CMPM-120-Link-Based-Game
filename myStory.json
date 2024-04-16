@@ -1,0 +1,188 @@
+{
+    "Title": "Ticket to Somewhere",
+    "Subtitle": "You are on a train.",
+    "Credits": "Created by Blythe Chen (blschen@ucsc.edu).",
+    "InitialLocation": "First Compartment",
+    "Locations": {
+        "First Compartment": {
+            "Body": "You look around the compartment. A tall, bearded man snores loudly in his seat.",
+            "Choices": [
+                {
+                    "Text": "Talk to the man",
+                    "Target": "NPC 1 Dialogue DOOR",
+                    "Door": "stopped snore"
+                },
+                {
+                    "Text": "Look out the window",
+                    "Target": "First Compartment",
+                    "InteractiveMechanism": "It's a bright, sunny spring day. The train seems to be passing through a meadow. You can see cows and sheep in the distance, grazing on fresh grass and canola flowers."
+                },
+                {
+                    "Text": "Head to the next compartment",
+                    "Target": "Second Compartment"
+                }
+            ]
+        },
+        "NPC 1 Dialogue DOOR_INVALID": {
+            "Body": "\"<b>ZZZZZZZZZZZZZZZZZZZZZ *snrk* ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ.</b>\"",
+            "Choices": [
+                {
+                    "Text": "Try to wake him up",
+                    "Target": "NPC 1 Dialogue DOOR_INVALID"
+                },
+                {
+                    "Text": "Back",
+                    "Target": "First Compartment"
+                }
+            ]
+        },
+        "NPC 1 Partial Woken Up": {
+            "Body": "\"<b>ZZzzzzzzzz?</b>\"",
+            "Choices": [
+                {
+                    "Text": "Try to wake him up",
+                    "Target": "NPC 1 Partial Woken Up"
+                },
+                {
+                    "Text": "Back",
+                    "Target": "First Compartment"
+                }
+            ]   
+        },
+        "NPC 1 Woken Up": {
+            "Body": "\"OKAYOKAY I'LL WAKE UP GEEZ,\" he yells, stopping you mid-poke.",
+            "Choices": [
+                {
+                    "StoryKeyProp": "stopped snore",
+                    "Text": "Back",
+                    "Target": "First Compartment"
+                }
+            ]
+        },
+        "NPC 1 Dialogue DOOR_VALID": {
+            "Body": "The man seems intent on ignoring you, clearly still upset at being woken from his nap.",
+            "Choices": [
+                {
+                    "Text": "Back",
+                    "Target": "First Compartment"
+                }
+            ]
+        },
+        "Second Compartment": {
+            "Body": "There's a guard sitting at the end of the corridor, blocking the way into the upper-class compartment. A few rows in front of him, a grumpy-looking woman reads a magazine. Every so often, she raises her head to glare in the direction of the first compartment.",
+            "Choices": [
+                {
+                    "Text": "Talk to the woman",
+                    "Target": "NPC 2 Dialogue DOOR",
+                    "Door": "stopped snore"
+                },
+                {
+                    "Text": "Head to the upper-class compartment",
+                    "Target": "Upper-Class Compartment DOOR",
+                    "Door": "firstClass ticket"
+                },
+                {
+                    "Text": "Back to the first compartment",
+                    "Target": "First Compartment"
+                }
+            ]
+        },
+        "NPC 2 Dialogue DOOR_INVALID": {
+            "Body": "\"You there!\" she snaps, setting her book down. \"Do me a favor and shut up whoever's making that <i>incessant</i> noise. It's disturbing my reading, and the staff here,\" she turns to glare at the guard behind her, \"refuse to do anything to help. I'll reward you for your efforts; just make it <i>stop</i>.\"",
+            "Choices" : [
+                {
+                    "Text": "Back",
+                    "Target": "Second Compartment"
+                }
+            ]
+        },
+        "NPC 2 Dialogue DOOR_VALID": {
+            "Body": "\"Finally, some peace and quiet. Thank you for putting an end to that ruckus. Here's my first-class ticket. Can you <i>believe</i> that they banned me from that compartment? Said I was 'too rude and unpleasant to deal with.' Unbelievable. What utter nonsense.\"",
+            "Choices" : [
+                {
+                    "StoryKeyProp": "firstClass ticket",
+                    "Text": "Back",
+                    "Target": "Second Compartment"
+                }
+            ]
+        },
+        "Upper-Class Compartment DOOR_VALID": { 
+            "Body": "You hand the guard your ticket. He scans it briefly before handing it back to you with a nod.\n\"Go ahead,\" he says, parting the curtain for you. Neat.",
+            "Choices": [
+                {
+                    "Text": "Proceed",
+                    "Target": "Upper-Class Compartment"
+                }
+            ]
+        },
+        "Upper-Class Compartment DOOR_INVALID": { 
+            "Body": "You hand the guard your ticket. He scans it briefly before handing it back to you with a frown.<br>\"No entry.\"",
+            "Choices": [
+                {
+                    "Text": "Back",
+                    "Target": "Second Compartment"
+                }
+            ]
+        },     
+        "Upper-Class Compartment": {
+            "Body": "This compartment looks relatively similar to the previous two. However, the chairs here are a lot nicer, made from plush red velvet.",
+            "Choices": [
+                {
+                    "Text": "Sit down",
+                    "Target": "Napping"
+                },
+                {
+                    "Text": "Return to the previous compartment",
+                    "Target": "Second Compartment"
+                }
+            ] 
+        },
+        "Napping": {
+            "Body": "You yawn as you take a seat and soon find yourself dozing...off...",
+            "Choices": [
+                {
+                    "Text": "Zzz",
+                    "Target": "Woken Up"
+                }
+            ]
+        },
+        "Woken Up": {
+            "Body": "You're brought back to reality as someone taps you sharply on the shoulder. Mumbling incoherently, you rub your eyes to see who it is...the conductor! He impatiently points a finger towards the door.<br>\"Last stop,\" he says. \"Time to get off.\"<br><br>You are unceremoniously kicked off of the train."
+        },
+        "First Stop CHECK": {
+            "Body": "You're interrupted as the train slows to a halt. You've arrived at the first stop!",
+            "Choices": [
+                {
+                    "Text": "Get off at this stop",
+                    "Target": "First Stop"
+                }, 
+                {
+                    "Text": "Stay on the train",
+                    "Target": "First Compartment"
+                }
+            ]
+        },
+        "First Stop": {
+            "Body": "You disembark from the train. Wait, where are you?"
+        }, 
+        "Second Stop CHECK": {
+            "Body": "You're interrupted as the train slows to a halt. You've arrived at the second stop!",
+            "Choices": [
+                {
+                    "Text": "Get off at this stop",
+                    "Target": "Second Stop"
+                }, 
+                {
+                    "Text": "Stay on the train",
+                    "Target": "First Compartment"
+                }
+            ]
+        },
+        "Second Stop": {
+            "Body": "You disembark from the train. Wait, where are you?"
+        },
+        "Last Stop": {
+            "Body": "You're interrupted by the arrival of the conductor, who impatiently points a finger towards the door.<br>\"Last stop,\" he says. \"Time to get off.\"<br><br>You are unceremoniously kicked off of the train."
+        }
+    }
+}
